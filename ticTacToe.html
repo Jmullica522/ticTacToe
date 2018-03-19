@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<head>
+<style>
+  body {
+  background-color: gray;
+  color: white;
+  }
+
+  .headerButton {
+  margin: 5px;
+  background-color: yellow;
+  }
+
+  .head {
+  margin: 0;
+  height: 35px;
+  width: 100%;
+  background-color: black;
+  }
+
+  .center {
+  margin: 200px;
+  }
+
+  .neutral {
+  height: 50px;
+  width: 50px;
+  }
+
+  .Xbox {
+  background-color: red;
+  height: 50px;
+  width: 50px;
+  }
+
+  .Obox {
+  background-color: blue;
+  height: 50px;
+  width: 50px;
+  }
+
+  .isWinner {
+  color: gray;
+  }
+</style>
+</head>
+<body>
+<div id="header" class="head">
+  <button class="headerButton" onclick="location.reload()">Reset</button>
+<!--  <button class="headerButton" onclick="checkDown()">checkDown() test</button> -->
+</div>
+
+<div class="center">
+  <TABLE>
+  <TR>
+    <TD><button id="topLeft" class="neutral" onclick="boxPress('topLeft')"> </button>
+    <TD><button id="topMiddle" class="neutral" onclick="boxPress('topMiddle')"> </button>
+    <TD><button id="topRight" class="neutral" onclick="boxPress('topRight')"> </button>
+  <TR>
+    <TD><button id="centLeft" class="neutral" onclick="boxPress('centLeft')"> </button>
+    <TD><button id="centMiddle" class="neutral" onclick="boxPress('centMiddle')"> </button>
+    <TD><button id="centRight" class="neutral" onclick="boxPress('centRight')"> </button>
+    <TR>
+      <TD><button id="botLeft" class="neutral" onclick="boxPress('botLeft')"> </button>
+      <TD><button id="botMiddle" class="neutral" onclick="boxPress('botMiddle')"> </button>
+      <TD><button id="botRight" class="neutral" onclick="boxPress('botRight')"> </button>
+  </TABLE>
+<p>Currently <span id="playerTurn">X</span> player's turn!</p>
+<div id="gameChecker" class="isWinner">N</div>
+</div>
+
+<!-- <p>Test</p> -->
+
+<script>
+
+function isWinner() {
+var win = false;
+if (document.getElementById("gameChecker").innerHTML === "N") {
+  return win;
+  } else {
+    win = true;
+    return win;
+  }
+}
+
+function getClass(gridId) { //reqX being requested grid number
+  var gridClass = document.getElementById(gridId).className;
+  return gridClass;
+}
+
+function isEquals(classList) {
+  if (classList[0] === "neutral") {
+    return false;
+  }
+  if (classList[0] === classList[1]) {
+    if (classList[1] === classList[2]) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
+}
+
+function checkAcross() {
+  var row= ["top", "cent", "bot"];
+  var column = ["Left", "Middle", "Right"];
+  var checkList = ["first", "second", "third"];
+  for (var i in row) {
+    for (var j in column) {
+      var gridString = row[i] + column[j];
+      checkList[j] = gridString;
+    }
+    for (var j in checkList) {
+    var newClass = getClass(checkList[j]);
+    checkList[j] = newClass;
+    }
+    var win = isEquals(checkList);
+    if (win) {
+      return win;
+      }
+  }
+  return false;
+}
+
+function checkDown() {
+  var row= ["top", "cent", "bot"];
+  var column = ["Left", "Middle", "Right"];
+  var checkList = ["first", "second", "third"];
+  for (var i in column) {
+    for (var j in row) {
+      var gridString = row[j] + column[i];
+      checkList[j] = gridString;
+    }
+    for (var j in checkList) {
+      var newClass = getClass(checkList[j]);
+      checkList[j] = newClass;
+    }
+    var win = isEquals(checkList);
+    if (win) {
+      return win;
+    }
+  }
+  return false;
+}
+
+function checkDiagonal() {
+
+}
+
+function checkWin() {
+  var win = false;
+  if (!win) {
+  win = checkAcross();
+  }
+  if (!win) {
+  win = checkDown();
+  }
+  if (!win) {
+  //win = checkDiagonal();
+  }
+  if (win) {
+  document.getElementById("gameChecker").innerHTML = "Y";
+  alert("Player " + document.getElementById("playerTurn").innerHTML + " wins!");
+  }
+return win;
+}
+
+function changeTurn() {
+  var turn = document.getElementById("playerTurn").innerHTML;
+  if (turn === "X") {
+    document.getElementById("playerTurn").innerHTML = "O";
+  } else {
+    document.getElementById("playerTurn").innerHTML = "X";
+  }
+}
+
+function whichClass(turn) {
+  if (turn === "X") {
+    return "Xbox";
+  } else {
+    return "Obox";
+  }
+}
+
+function changeBox(boxId, turn) {
+  var boxClass = document.getElementById(boxId).className;
+  if (boxClass === "neutral") {
+    var newClass = whichClass(turn);
+    document.getElementById(boxId).className = newClass;
+    document.getElementById(boxId).innerHTML = turn;
+  } else {
+    return 0;
+  }
+}
+
+function boxPress(boxId) {
+  if (isWinner()) {
+    alert("Game already over. Please reset.");
+    return 0;
+  }
+  var pTurn = document.getElementById("playerTurn").innerHTML;
+  var winCheck = false;
+  changeBox(boxId, pTurn);
+  winCheck = checkWin();
+  if (!winCheck) {
+    changeTurn();
+  } else {
+    //alert("test");
+  }
+}
+
+</script>
+</body>
+</html>
