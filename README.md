@@ -11,11 +11,11 @@ At this time the site is relatively simple with only one dominate feature. This 
 
 #### Known bugs/missing Features
 
-1. Still need to fix the logic to check for a win going diagonally across the board
+1. A win counter that carries over refresh
 
-2. A win counter that carries over refresh
+2. Logic to check for a time
 
-3. Logic to check for a time
+3. Clicking on a selected square results in a turn change despite invalid move
 
 Contact me
 ---

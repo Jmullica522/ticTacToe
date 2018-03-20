@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <head>
+<meta charset="utf-8">
+<title>Tic Tac Toe</title>
 <style>
   body {
   background-color: gray;
@@ -146,7 +148,24 @@ function checkDown() {
 }
 
 function checkDiagonal() {
-
+  var leftDiag = ["topLeft", "centMiddle", "botRight"];
+  var rightDiag = ["topRight", "centMiddle", "botLeft"];
+  var checkList = ["a", "b", "c"];
+  for (var i in leftDiag) {
+    checkList[i] = getClass(leftDiag[i]);
+  }
+  var win = isEquals(checkList);
+  if (win) {
+    return true;
+  }
+  for (var i in rightDiag) {
+    checkList[i] = getClass(rightDiag[i]);
+  }
+  win = isEquals(checkList);
+  if (win) {
+    return true;
+  }
+  return false;
 }
 
 function checkWin() {
@@ -158,7 +177,7 @@ function checkWin() {
   win = checkDown();
   }
   if (!win) {
-  //win = checkDiagonal();
+  win = checkDiagonal();
   }
   if (win) {
   document.getElementById("gameChecker").innerHTML = "Y";
