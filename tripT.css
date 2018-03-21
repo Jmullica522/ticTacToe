@@ -1,0 +1,41 @@
+  body {
+  background-color: gray;
+  color: white;
+  }
+
+  .headerButton {
+  margin: 5px;
+  background-color: yellow;
+  }
+
+  .head {
+  margin: 0;
+  height: 35px;
+  width: 100%;
+  background-color: black;
+  }
+
+  .center {
+  margin: 200px;
+  }
+
+  .neutral {
+  height: 50px;
+  width: 50px;
+  }
+
+  .Xbox {
+  background-color: red;
+  height: 50px;
+  width: 50px;
+  }
+
+  .Obox {
+  background-color: blue;
+  height: 50px;
+  width: 50px;
+  }
+
+  .isWinner {
+  color: gray;
+  }

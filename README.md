@@ -5,9 +5,7 @@ At this time the site is relatively simple with only one dominate feature. This 
 
 ### Planned projects
 
-1. Move the CSS and JavaScript into separate files
-
-2. Adjust header bar with more links
+1. Adjust header bar with more links
 
 #### Known bugs/missing Features
 
