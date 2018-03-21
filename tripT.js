@@ -1,3 +1,14 @@
+function boardClear() {
+    var row= ["top", "cent", "bot"];
+    var column = ["Left", "Middle", "Right"];
+    var rowClearing = ["a", "b", "c"];
+    for (var i in row) {
+      for (var j in column) {
+        var grid = row[i] + column[j];
+        document.getElementById(grid).className = "neutral";
+      }
+    }
+}
 
 function isWinner() {
 var win = false;

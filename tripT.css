@@ -4,19 +4,23 @@
   }
 
   .headerButton {
-  margin: 5px;
+  margin: 25px;
+  color: blue;
   background-color: yellow;
   }
 
   .head {
-  margin: 0;
-  height: 35px;
-  width: 100%;
+  position: absolute;
+  float: left;
+  height: 100%;
+  width: 125px;
   background-color: black;
   }
 
   .center {
-  margin: 200px;
+  width: 50%;
+  position: absolute;
+  margin-left: 150px;
   }
 
   .neutral {
