@@ -13,8 +13,6 @@ At this time the site is relatively simple with only one dominate feature. This 
 
 2. Logic to check for a tie
 
-3. Clicking on a selected square results in a turn change despite invalid move
-
 Contact me
 ---
 Email | mullicajoey522@gmail.com

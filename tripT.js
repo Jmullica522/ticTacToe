@@ -149,9 +149,22 @@ function changeBox(boxId, turn) {
   }
 }
 
+function isBoxTaken(boxId) {
+  var checkClass = document.getElementById(boxId).className;
+  if (checkClass === "neutral") {
+    return false;
+  } else {
+    return true;
+  }
+}
+
 function boxPress(boxId) {
   if (isWinner()) {
     alert("Game already over. Please reset.");
+    return 0;
+  }
+  var taken = isBoxTaken(boxId);
+  if (taken) {
     return 0;
   }
   var pTurn = document.getElementById("playerTurn").innerHTML;
